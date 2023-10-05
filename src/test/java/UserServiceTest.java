@@ -3,7 +3,6 @@ import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.util.List;
 
 public class UserServiceTest {
@@ -13,13 +12,13 @@ public class UserServiceTest {
     private final String testLastName = "Ivanov";
     private final byte testAge = 5;
 
-
     @Test
     public void dropUsersTable() {
         try {
             userService.dropUsersTable();
             userService.dropUsersTable();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             Assert.fail("При тестировании удаления таблицы произошло исключение\n" + e);
         }
     }
@@ -29,7 +28,8 @@ public class UserServiceTest {
         try {
             userService.dropUsersTable();
             userService.createUsersTable();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             Assert.fail("При тестировании создания таблицы пользователей произошло исключение\n" + e.getMessage());
         }
     }
@@ -49,8 +49,8 @@ public class UserServiceTest {
             ) {
                 Assert.fail("User был некорректно добавлен в базу данных");
             }
-
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             Assert.fail("Во время тестирования сохранения пользователя произошло исключение\n" + e);
         }
     }
@@ -62,7 +62,8 @@ public class UserServiceTest {
             userService.createUsersTable();
             userService.saveUser(testName, testLastName, testAge);
             userService.removeUserById(1L);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             Assert.fail("При тестировании удаления пользователя по id произошло исключение\n" + e);
         }
     }
@@ -78,7 +79,8 @@ public class UserServiceTest {
             if (userList.size() != 1) {
                 Assert.fail("Проверьте корректность работы метода сохранения пользователя/удаления или создания таблицы");
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             Assert.fail("При попытке достать всех пользователей из базы данных произошло исключение\n" + e);
         }
     }
@@ -94,9 +96,9 @@ public class UserServiceTest {
             if (userService.getAllUsers().size() != 0) {
                 Assert.fail("Метод очищения таблицы пользователей реализован не корректно");
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             Assert.fail("При тестировании очистки таблицы пользователей произошло исключение\n" + e);
         }
     }
-
 }
